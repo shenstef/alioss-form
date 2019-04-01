@@ -167,7 +167,7 @@
             filters : {
                 max_file_size : '5gb',
                 mime_types: [
-                    {title : "音频/视频", extensions : "MP3,WAV,AAC,FLAC, AVI,mov,rmvb,rm,FLV,mp4,3GP"}
+                    {title : "音频/视频", extensions : "mp3,wav,aac,flac,avi,mov,flv,mp4,3gp"}
                 ]
             },
 
@@ -199,10 +199,10 @@
                     var path = key + filename_new;
                     var all_path = cdn_url + '/' + path;
                     if(multi) {
-                        $('#'+file.id).html('<span class="upload_del_btn" data-filename="'+path+'" onclick="'+ "del_pic(this,true)" +'">删除</span><img src="' + all_path +'?x-oss-process=image/resize,m_fill,w_100,h_100"><input type="hidden" class="Js_upload_input" name="'+id.split('_')[0]+'[]" value="'+path+'">');
+                        $('#'+file.id).html('<span class="upload_del_btn" data-filename="'+path+'" onclick="'+ "del_pic(this,true)" +'">删除</span><video src="' + all_path +'?x-oss-process=image/resize,m_fill,w_100,h_100">您的浏览器不支持 video 标签。</video><input type="hidden" class="Js_upload_input" name="'+id.split('_')[0]+'[]" value="'+path+'">');
                     }else{
                         $('#'+file.id+'_canvas').remove();
-                        upload_warp.prepend('<img data-filename="'+path+'" src="' + all_path +'?x-oss-process=image/resize,m_fill,w_100,h_100">').find('input.Js_upload_input').val(path);
+                        upload_warp.prepend('<video data-filename="'+path+'" src="' + all_path +'?x-oss-process=image/resize,m_fill,w_100,h_100">您的浏览器不支持 video 标签。</video>').find('input.Js_upload_input').val(path);
                     }
                 },
                 Error: function(up, err) {
@@ -224,7 +224,7 @@
             runtimes : 'html5,flash,silverlight,html4',
             browse_button : btnId,//'pickfiles',
             container: container.get(0),//document.getElementById('container'),
-            url : '/admin/upload_file',
+            url : '/backend/upload_file',
             flash_swf_url : './plupload-2.1.2/Moxie.swf',
             silverlight_xap_url : './plupload-2.1.2/Moxie.xap',
             multi_selection: false,//false单选，true多选
@@ -233,7 +233,7 @@
             filters : {
                 max_file_size : '10mb',
                 mime_types: [
-                    {title : "Image files", extensions : "jpg,jpeg,gif,png"}
+                    {title : "音频/视频", extensions : "mp3,wav,aac,flac,avi,mov,flv,mp4,3gp"}
                 ]
             },
             init: {
