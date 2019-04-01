@@ -231,7 +231,7 @@
             multipart_params: { '_token' : token },
             //过滤
             filters : {
-                max_file_size : '10mb',
+                max_file_size : '5gb',
                 mime_types: [
                     {title : "音频/视频", extensions : "mp3,wav,aac,flac,avi,mov,flv,mp4,3gp"}
                 ]
