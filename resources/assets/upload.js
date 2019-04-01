@@ -58,7 +58,7 @@
         if (expire < now + 300) {//300s缓冲
             //ajax
             $.ajax({
-                url:'/admin/alioss_param',
+                url:'/backend/alioss_param',
                 type:'get',
                 dataType:'json',
                 async: false,//同步
@@ -158,16 +158,16 @@
             runtimes : 'html5,flash,silverlight,html4',
             browse_button : id,//'pickfiles',
             container: container.get(0),//document.getElementById('container'),
-            url : '/admin/upload_file',
+            url : '/backend/upload_file',
             flash_swf_url : './plupload-2.1.2/Moxie.swf',
             silverlight_xap_url : './plupload-2.1.2/Moxie.xap',
             multi_selection: multi,//false单选，true多选
             multipart_params: { '_token' : token },
             //过滤
             filters : {
-                max_file_size : '10mb',
+                max_file_size : '5gb',
                 mime_types: [
-                    {title : "Image files", extensions : "jpg,jpeg,gif,png"}
+                    {title : "音频/视频", extensions : "MP3,WAV,AAC,FLAC, AVI,mov,rmvb,rm,FLV,mp4,3GP"}
                 ]
             },
 
