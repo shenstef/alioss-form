@@ -199,10 +199,10 @@
                     var path = key + filename_new;
                     var all_path = cdn_url + '/' + path;
                     if(multi) {
-                        $('#'+file.id).html('<span class="upload_del_btn" data-filename="'+path+'" onclick="'+ "del_pic(this,true)" +'">删除</span><video src="' + all_path +'?x-oss-process=image/resize,m_fill,w_100,h_100">您的浏览器不支持 video 标签。</video><input type="hidden" class="Js_upload_input" name="'+id.split('_')[0]+'[]" value="'+path+'">');
+                        $('#'+file.id).html('<span class="upload_del_btn" data-filename="'+path+'" onclick="'+ "del_pic(this,true)" +'">删除</span><video controls src="' + all_path +'">您的浏览器不支持 video 标签。</video><input type="hidden" class="Js_upload_input" name="'+id.split('_')[0]+'[]" value="'+path+'">');
                     }else{
                         $('#'+file.id+'_canvas').remove();
-                        upload_warp.prepend('<video data-filename="'+path+'" src="' + all_path +'?x-oss-process=image/resize,m_fill,w_100,h_100">您的浏览器不支持 video 标签。</video>').find('input.Js_upload_input').val(path);
+                        upload_warp.prepend('<video controls data-filename="'+path+'" src="' + all_path +'">您的浏览器不支持 video 标签。</video>').find('input.Js_upload_input').val(path);
                     }
                 },
                 Error: function(up, err) {
