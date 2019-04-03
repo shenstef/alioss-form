@@ -35,8 +35,8 @@ class AliOssFormServiceProvider extends ServiceProvider
         });
 
 
-        $this->app->booted(function () {
-            AliOssForm::routes(__DIR__.'/../routes/web.php');
-        });
+//        $this->app->booted(function () {
+//            AliOssForm::routes(__DIR__.'/../routes/web.php');
+//        });
     }
 }
