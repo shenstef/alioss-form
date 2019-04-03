@@ -167,7 +167,7 @@
             filters : {
                 max_file_size : '5gb',
                 mime_types: [
-                    {title : "音频/视频", extensions : "mp3,wav,aac,flac,avi,mov,flv,mp4,3gp"}
+                    {title : "文件", extensions : "gif,jpeg,jpg,png,bmp,text,txt,doc,docx,ppt,pptx,xls,xlsx,pdf,mp3,wav,aac,flac,avi,mov,flv,mp4,3gp"}
                 ]
             },
 
@@ -198,11 +198,23 @@
                 FileUploaded: function(up, file, info) {
                     var path = key + filename_new;
                     var all_path = cdn_url + '/' + path;
+                    var type = file.type.split('/');
                     if(multi) {
                         $('#'+file.id).html('<span class="upload_del_btn" data-filename="'+path+'" onclick="'+ "del_pic(this,true)" +'">删除</span><video controls src="' + all_path +'">您的浏览器不支持 video 标签。</video><input type="hidden" class="Js_upload_input" name="'+id.split('_')[0]+'[]" value="'+path+'">');
                     }else{
                         $('#'+file.id+'_canvas').remove();
-                        upload_warp.prepend('<video controls data-filename="'+path+'" src="' + all_path +'">您的浏览器不支持 video 标签。</video>').find('input.Js_upload_input').val(path);
+                        switch (type[0]) {
+                            case 'image':
+                                upload_warp.prepend('<image data-filename="'+path+'" src="' + all_path +'">').find('input.Js_upload_input').val(path);
+                                break;
+                            case 'video':
+                            case 'audio':
+                                upload_warp.prepend('<video controls data-filename="'+path+'" src="' + all_path +'">您的浏览器不支持 video 标签。</video>').find('input.Js_upload_input').val(path);
+                                break;
+                            default:
+                                upload_warp.prepend('<a data-filename="'+path+'" href="' + all_path +'">'+path+'</a>').find('input.Js_upload_input').val(path);
+                                break;
+                        }
                     }
                 },
                 Error: function(up, err) {
@@ -233,7 +245,7 @@
             filters : {
                 max_file_size : '5gb',
                 mime_types: [
-                    {title : "音频/视频", extensions : "mp3,wav,aac,flac,avi,mov,flv,mp4,3gp"}
+                    {title : "文件", extensions : "text,txt,doc,docx,ppt,pptx,xls,xlsx,pdf,mp3,wav,aac,flac,avi,mov,flv,mp4,3gp"}
                 ]
             },
             init: {
