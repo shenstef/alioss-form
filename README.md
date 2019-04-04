@@ -24,9 +24,9 @@ return [
 
 ### 使用
 ```
-$form->file('pic', '单图');
-$form->image('images', '多图');
-$form->editor('content', '编辑器');
+$form->file('file', '文件');
+支持的类型有：
+gif,jpeg,jpg,png,bmp,text,txt,doc,docx,ppt,pptx,xls,xlsx,pdf,mp3,wav,aac,flac,avi,mov,flv,mp4,3gp
 ```
 
 ### 截图
