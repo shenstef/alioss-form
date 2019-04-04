@@ -122,20 +122,11 @@
     window.del_pic = function(obj, multi) {
         obj = $(obj);
         var filename = '';
-        if(multi) {
-            filename = obj.attr('data-filename');
-            var upload_warp = obj.parents('div.upload_warp');
-            obj.parents('div.upload_item').remove();
-            if(upload_warp.find('.upload_item').length === 0) {
-                upload_warp.hide();
-            }
-        }else{
-            var warp = obj.parent();
-            filename = warp.find('img').attr('data-filename');
-            warp.find('img').remove();
-            warp.find('.upload_add_img').show();
-            warp.find('input.Js_upload_input').val('');
-        }
+        var warp = obj.parent();
+        filename = warp.find('img,a,audio,video').attr('data-filename');
+        warp.find('img,a,audio,video').remove();
+        warp.find('.upload_add_img').show();
+        warp.find('input.Js_upload_input').val('');
     }
 
     // 图片上传
@@ -143,17 +134,6 @@
         var element = $('#'+id);
         var upload_warp = multi ? $(element.attr('data-warp')) : element.parents('.Js_upload_warp');
         var container = $('<div style="height:0px;width:0px;display:none"></div>').appendTo(upload_warp);
-        // if(multi) {
-        //     Sortable.create(upload_warp.get(0), {
-        //         group: {
-        //             pull: false,
-        //             put: false
-        //         },
-        //         handle: 'img',
-        //         ghostClass: 'upload_ghost',
-        //         chosenClass: 'upload_chose',
-        //     });
-        // }
         var uploader = new plupload.Uploader({
             runtimes : 'html5,flash,silverlight,html4',
             browse_button : id,//'pickfiles',
